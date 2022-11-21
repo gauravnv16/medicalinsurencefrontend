@@ -54,7 +54,7 @@ export const PolicyViewScreen= () =>{
             </section>
             <br/>
             <section style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
-                <button className="ui button" onClick={ () => navigate('/user/policy/claim',{state:{policy:location.state.policy}})}>Claim</button>
+                <button className="ui button" onClick={ () => navigate('/user/policy/claim',{state:{policy:location.state.policy,user:location.state.user}})}>Claim</button>
                 <button className="ui button">withdraw</button>
             </section>
             <br/><br/><br/><br/><br/>

@@ -1,14 +1,15 @@
 import { useState } from "react"
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export const PolicySceen = () => {
+    const location = useLocation();
     const navigate = useNavigate();
     const policies = [
         "Policy 1",
         "Policy 2"
     ]
     const [arr,setArr] = useState(policies);
-    
+    console.log(location.state)
     const Search = () => {
         let e = document.getElementById("search");
 
@@ -51,7 +52,7 @@ export const PolicySceen = () => {
                                         </div>
                                     </h4></td>
                                     <td>
-                                        <button onClick={ () => navigate("/user/policy/view",{state:{policy:policy}}) } className="ui button">View</button>
+                                        <button onClick={ () => navigate("/user/policy/view",{state:{policy:policy,user:location.state.user}}) } className="ui button">View</button>
                                     </td>
                                 </tr>
                         else {

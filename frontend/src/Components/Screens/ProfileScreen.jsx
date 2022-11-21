@@ -54,7 +54,7 @@ export const ProfileScreen = () => {
                         <td>
                             <i className="file icon"></i> Policy
                         </td>
-                        <td><Link to="/user/policy">View</Link></td>
+                        <td><button className="ui button" onClick={() => { navigate("/user/policy",{state:{user:User}})}}>View</button></td>
                         </tr>
                         <tr>
                         <td>

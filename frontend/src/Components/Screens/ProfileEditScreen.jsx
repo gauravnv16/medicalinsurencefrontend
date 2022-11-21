@@ -1,12 +1,13 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux"
-import { Link, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import { API_URL } from "../../../API";
 
 export const ProfileEditScreen = () => {
     const [User,setUsers] = useState({});
     const params = useParams();
+    const navigate = useNavigate();
 
     useEffect(() => {
         axios.get(API_URL+'api/user/'+params.id).then((data) => {
@@ -55,7 +56,7 @@ export const ProfileEditScreen = () => {
                         <td>
                             <i className="file icon"></i> Policy
                         </td>
-                        <td><Link to="/user/policy">View</Link></td>
+                        <td><button onClick={navigate("/user/policy",{state:{user:User}})}>View</button></td>
                         </tr>
                         <tr>
                         <td>
