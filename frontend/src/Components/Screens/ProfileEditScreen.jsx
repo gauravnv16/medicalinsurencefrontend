@@ -15,8 +15,28 @@ export const ProfileEditScreen = () => {
         });
     });
 
+    const SubmitHandler = (e) => {
+        e.preventDefault();
+
+        const Uobj = {};
+
+        if(e.target.Name.value !== '')
+            Uobj['Name'] = e.target.Name.value;
+
+        if(e.target.Phone_no.value !== '')
+            Uobj['Phone_no'] = e.target.Phone_no.value;
+
+        if(e.target.Name.value !== '')
+            Uobj['Email'] = e.target.email.value;
+            
+        if(e.target.Name.value !== '')
+            Uobj['Address'] = e.target.Address.value;
+
+        console.log(Uobj);
+    }
+
     return (
-        <div style={{minWidth:"300px"}}>
+        <form style={{minWidth:"300px"}} onSubmit={ SubmitHandler }>
             <hr style={{border:"none",borderBottom:"90px solid #ddd"}}/>
             <h1 style={{textAlign:"center"}}>Update</h1>
             <section className="profileContent">
@@ -50,13 +70,13 @@ export const ProfileEditScreen = () => {
                         <td>
                             <i className="book icon"></i> Address
                         </td>
-                       <td><input className="input" name="Name" id="" value={User.Address}></input></td>
+                       <td><input className="input" name="Address" id="" value={User.Address}></input></td>
                         </tr>
                         <tr>
                         <td>
                             <i className="file icon"></i> Policy
                         </td>
-                        <td><button onClick={navigate("/user/policy",{state:{user:User}})}>View</button></td>
+                        <td><button className="ui button" onClick={() => navigate("/user/policy",{state:{user:User}})}>View</button></td>
                         </tr>
                         <tr>
                         <td>
@@ -75,6 +95,6 @@ export const ProfileEditScreen = () => {
 
             </section>
             <br/><br/><br/><br/><br/>
-        </div>
+        </form>
     )
 }

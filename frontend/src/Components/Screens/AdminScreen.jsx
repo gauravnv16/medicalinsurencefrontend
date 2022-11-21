@@ -47,7 +47,7 @@ export const AdminScreen = () =>{
         <div className="ui cards" style={{width:"300px"}}>
             {
                 arr.map((user) => {
-                    if(!user.isAdmin && !user.isApproved)
+                    // if(!user.isAdmin && !user.isApproved)
                     return (
                         <div class="card">
                             <div class="content">
@@ -59,7 +59,7 @@ export const AdminScreen = () =>{
                                 applicant
                             </div>
                             <div class="description">
-                                {user.Name} requested permission for {user.approvalType}
+                                {user.Name} requested permission for {user.ApprovalType}
                             </div>
                             </div>
                             <div class="extra content">
