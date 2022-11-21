@@ -1,0 +1,22 @@
+{
+  "name": "medicalinsurencefrontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build":"cd frontend && npm install && npm run build ",
+    "start":"cd frontend && npm run preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gauravnv16/medicalinsurencefrontend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gauravnv16/medicalinsurencefrontend/issues"
+  },
+  "homepage": "https://github.com/gauravnv16/medicalinsurencefrontend#readme"
+}

@@ -1,0 +1,74 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    
+}
+
+ul {
+    list-style: none;
+}
+.container form {
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.container form input{
+    border: none;
+    background-color: rgb(235, 235, 235);
+    padding: 10px;
+    width: 100%;
+    display: block;
+    margin: 15px;
+    border-radius: 5px;
+}
+
+.container form button:nth-of-type(odd) {
+    border: none;
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    width: 100%;
+    border-radius: 5px;;
+}
+
+.container form button:nth-of-type(even) {
+    border: none;
+    padding: 10px 20px;
+    background-color: #ddd;
+    color: black;
+    width: 100%;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background:url(https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGNvbXBhbnl8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60);
+    padding: 20px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 50vh;
+}
+
+header button:nth-of-type(odd){
+    border: 1px solid white;
+    color: white;
+    border-radius: 5px;
+    padding: 10px 20px;
+    background-color:transparent;
+}
+
+header h1 span{
+    display: block;
+    font-weight: 100;
+}
