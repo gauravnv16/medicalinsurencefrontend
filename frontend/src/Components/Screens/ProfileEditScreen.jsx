@@ -19,20 +19,27 @@ export const ProfileEditScreen = () => {
         e.preventDefault();
 
         const Uobj = {};
-
+        console.log(e.target.Name.value)
         if(e.target.Name.value !== '')
             Uobj['Name'] = e.target.Name.value;
 
-        if(e.target.Phone_no.value !== '')
-            Uobj['Phone_no'] = e.target.Phone_no.value;
+        if(e.target.Phone_No.value !== '')
+            Uobj['Phone_no'] = e.target.Phone_No.value;
 
-        if(e.target.Name.value !== '')
+        if(e.target.email.value !== '')
             Uobj['Email'] = e.target.email.value;
             
-        if(e.target.Name.value !== '')
-            Uobj['Address'] = e.target.Address.value;
-
-        console.log(Uobj);
+        if(e.target.Address.value !== '')
+            Uobj['Address'] = e.target.Address.value;      
+        axios({
+                headers: { 
+                    'content-type': 'application/json'
+                },
+                method: 'post',
+                url: `${API_URL}api/user/${params.id}/update`,
+                params: Uobj
+        });
+        navigate('/user/profile')
     }
 
     return (
@@ -52,25 +59,25 @@ export const ProfileEditScreen = () => {
                         <td className="collapsing">
                             <i className="lock icon"></i> Name
                         </td>
-                        <input className="input" name="Name" id="Name" value={User.Name}></input>
+                        <input className="input" name="Name" id="Name" defaultValue={User.Name}></input>
                         </tr>
                         <tr>
                         <td className="collapsing">
                             <i className="phone icon"></i> Phone no
                         </td>
-                        <input className="input" name="Phone_No" id="Name" value={User.Phone_no}></input>
+                        <input className="input" name="Phone_No" id="Phone_No" defaultValue={User.Phone_no}></input>
                         </tr>
                         <tr>
                         <td>
                             <i className="envelope icon"></i> email
                         </td>
-                        <input className="input" name="email" id="Name" value={User.Email}></input>
+                        <input className="input" name="email" id="email" value={User.Email}></input>
                         </tr>
                         <tr>
                         <td>
                             <i className="book icon"></i> Address
                         </td>
-                       <td><input className="input" name="Address" id="" value={User.Address}></input></td>
+                       <td><input className="input" name="Address" id="Address" defaultValue={User.Address}></input></td>
                         </tr>
                         <tr>
                         <td>
