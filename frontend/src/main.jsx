@@ -27,23 +27,18 @@ import './index.css'
 import { Loader } from './Components/PageComponent/Loader';
 import { ErrorBoundary } from 'react-error-boundary';
 import ErrorFallback from './ErrorBoundry';
-
-// const  ProfileScreen  = lazy(() => import('./Components/Screens/ProfileScreen')) ;
-// const  ProfileScreen  = loadable(() => import('./Components/Screens/ProfileScreen')) ;
-// const  PolicyViewScreen  = React.lazy(() => import('./Components/Screens/PolicyViewScreen'));
-// const  PolicySceen   = React.lazy(() => import( './Components/Screens/PolicyScreen'));
-// const  FilesScreen   = React.lazy(() => import('./Components/Screens/FilesScreen'));
-// const  FilesViewScreen  =  React.lazy(() => import('./Components/Screens/FilesViewScreen'));
-// const  UserProfileApproval = React.lazy(() => import('./Components/Screens/Admin/User/UserProfileApproval'));
-// const  UserPolicyApproval  = React.lazy(() => import('./Components/Screens/Admin/User/UserPolicyApproval'));
-// const  UserViewScreen  = React.lazy(() => import('./Components/Screens/Admin/views/UserViewScreen'));
+import { createStore } from 'redux';
+import { Allreducers } from './Reducers/AllReducers';
+import { Provider } from 'react-redux';
+import { ProfileEditScreen } from './Components/Screens/ProfileEditScreen';
 
 
+const store = createStore(Allreducers,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
    <BrowserRouter>
-
+    <Provider store={store}>
         <NavBar/>
         <ErrorBoundary FallbackComponent={ ErrorFallback } onReset={() => {}}>
         <Suspense fallback={<Loader/>}>
@@ -55,6 +50,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           
             
             <Route path="/user/profile" element={<ProfileScreen/>}></Route>
+            <Route path="/user/Update" element={<ProfileEditScreen/>}></Route>
             <Route path="/user/policy" element={<PolicySceen/>}></Route>
             <Route path="/user/policy/view" element={<PolicyViewScreen/>}></Route>
             <Route path="/user/files" element={<FilesScreen/>}></Route>
@@ -69,6 +65,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           </Suspense> 
           </ErrorBoundary>
         <Footer/>
+        </Provider>
     </BrowserRouter>
   </React.StrictMode>
 )

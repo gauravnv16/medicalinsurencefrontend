@@ -10,12 +10,13 @@ nav h1{
     padding: 10px;
 }
 
-.SideMenuButton{
+button.SideMenuButton{
     display: none;
     border: none;
-    padding: 10px 20px;
+    padding: 10px 50px;
     border-radius: 5px;
     padding: 10px;
+    font-size: 25px;
 }
 
 .navBar1{
@@ -195,6 +196,10 @@ footer {
     }
 }
 @media only screen and (max-width:550px) {
+    button.SideMenuButton
+    {
+        display: block;
+    }
     .top_stats{
         display: flex;
         justify-content: left;

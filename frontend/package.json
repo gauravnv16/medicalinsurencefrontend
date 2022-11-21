@@ -11,13 +11,16 @@
   },
   "dependencies": {
     "@loadable/component": "^5.15.2",
+    "axios": "^1.1.3",
+    "dotenv": "^16.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-error-boundary": "^3.1.4",
     "react-redux": "^8.0.5",
     "react-router": "^6.4.3",
     "react-router-dom": "^6.4.3",
-    "redux": "^4.2.0"
+    "redux": "^4.2.0",
+    "redux-persist": "^6.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.24",

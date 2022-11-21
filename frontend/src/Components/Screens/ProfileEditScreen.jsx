@@ -1,22 +1,12 @@
 import { useSelector } from "react-redux"
-import { Link, Navigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 
-export const ProfileScreen = () => {
+export const ProfileEditScreen = () => {
     const User = useSelector(state=>state.SignedUser)
-
-    if(User.Name != '')
     return (
         <div style={{minWidth:"300px"}}>
             <hr style={{border:"none",borderBottom:"90px solid #ddd"}}/>
-            <section className="top_stats">
-                <div className="profile_pic">
-                    <img src="https://images.unsplash.com/photo-1668894231649-4f9634cf2c8e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0NXx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60" alt="profilePic"></img>
-                </div>
-                <div className="profile_heading">
-                    <h1>{User.Name} <i className="check circle icon"></i></h1>
-                    <p>applicant</p>
-                </div>
-            </section>
+            <h1>Update</h1>
             <section className="profileContent">
             <div style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
                 <table className="ui celled striped table" style={{width:"400px",padding:"10px"}}>
@@ -28,27 +18,27 @@ export const ProfileScreen = () => {
                     <tbody>
                     <tr>
                         <td className="collapsing">
-                            <i className="lock icon"></i> Id no
+                            <i className="lock icon"></i> Name
                         </td>
-                        <td>{User.Id}</td>
+                        <input className="input" name="Name" id="Name" value={User.Name}></input>
                         </tr>
                         <tr>
                         <td className="collapsing">
                             <i className="phone icon"></i> Phone no
                         </td>
-                        <td>{User.Phone_no}</td>
+                        <input className="input" name="Name" id="Name" value={User.Phone_No}></input>
                         </tr>
                         <tr>
                         <td>
                             <i className="envelope icon"></i> email
                         </td>
-                        <td>{User.Email}</td>
+                        <input className="input" name="Name" id="Name" value={User.Email}></input>
                         </tr>
                         <tr>
                         <td>
                             <i className="book icon"></i> Address
                         </td>
-                        <td>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa, quibusdam.</td>
+                       <td><input className="input" name="Name" id="Name" value={User.Address}></input></td>
                         </tr>
                         <tr>
                         <td>
@@ -75,6 +65,4 @@ export const ProfileScreen = () => {
             <br/><br/><br/><br/><br/>
         </div>
     )
-    else 
-    return <Navigate to='/user/Update'></Navigate>
 }

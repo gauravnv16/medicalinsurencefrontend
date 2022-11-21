@@ -1,13 +1,38 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom";
+import axios from 'axios';
+import { config } from 'dotenv';
 import '../../index.css';
+import { API_URL } from "../../../API";
+import { useDispatch } from "react-redux";
+import { LoginAction } from "../../Actions/LoginAction";
+import { LoggedUser } from "../../Actions/LoggedUser";
 
 export const LogInForm = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const HandleLogin = (e) => {
         e.preventDefault();
+                
+        let uobj= {
+            uname:e.target.uname.value,
+            pass:e.target.pass.value
+        }  
 
-        //loginLogic
+        if(uobj.uname != '' && uobj.pass !='')
+        axios({
+            headers: { 
+                'content-type': 'application/json'
+            },
+            method: 'post',
+            url: `${API_URL}api/login`,
+            params: uobj
+        }).then((data) => {
+            console.log(data.data[0]);
+            dispatch(LoggedUser(data.data[0]))
+            dispatch(LoginAction());
+        });
+
 
         navigate("/user/profile");
     }
@@ -32,9 +57,25 @@ export const RegisterForm = () => {
         e.preventDefault();
 
         //registerlogic
+        
+        let uobj= {
+            uname:e.target.uname.value,
+            email:e.target.email.value,
+            pass:e.target.pass.value
+        }  
+
+        if(uobj.uname != '' && uobj.pass !='' && uobj.email !='') 
+        axios({
+            headers: { 
+                'content-type': 'application/json'
+            },
+            method: 'post',
+            url: `${API_URL}api/register`,
+            params: uobj
+        });
         setIsCreated(true);
         navigate("/login",{state:{isCreated:true}});
-        
+        console.log(uobj)
     }
     return(
         <div className="container">
