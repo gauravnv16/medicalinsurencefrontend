@@ -1,10 +1,11 @@
 import { useState } from "react"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const PolicySceen = () => {
+    const navigate = useNavigate();
     const policies = [
-        "New name",
-        "New life"
+        "Policy 1",
+        "Policy 2"
     ]
     const [arr,setArr] = useState(policies);
     
@@ -50,7 +51,7 @@ export const PolicySceen = () => {
                                         </div>
                                     </h4></td>
                                     <td>
-                                        <Link to="/user/policy/view" className="ui button">View</Link>
+                                        <button onClick={ () => navigate("/user/policy/view",{state:{policy:policy}}) } className="ui button">View</button>
                                     </td>
                                 </tr>
                         else {

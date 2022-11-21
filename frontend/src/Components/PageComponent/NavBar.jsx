@@ -71,15 +71,21 @@ const NavBar = () => {
                 </ul>
 
                 <ul onClick={ sideBarHandler }>
-                    <li><Link to="/user/profile">{User.Name}</Link></li>
+                    <li><Link to="/user/profile">{User.Username}</Link></li>
+                    {
+                        (User.isAdmin)?<li><Link to="/user/admin">Admin</Link></li>:""
+                    }
                     <li><a href="/">logout</a></li>
                 </ul>
 
             </aside>
 
             <ul className='navBar1'>
-            <li><Link to="/user/profile">{User.Name}</Link></li>
-             <li><a href="/">logout</a></li>
+            <li><Link to="/user/profile">{User.Username}</Link></li>
+            {
+                (User.isAdmin)?<li><Link to="/user/admin">Admin</Link></li>:""
+            }
+            <li><a href="/">logout</a></li>
             </ul>
         </nav>
     ) 

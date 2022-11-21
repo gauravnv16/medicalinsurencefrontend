@@ -1,4 +1,8 @@
+import { useLocation } from "react-router"
+
 export const FilesViewScreen = () => {
+    const location = useLocation();
+    console.log(location.state.file)
     return (
         <div style={{minWidth:"300px"}}>
             <hr style={{border:"none",borderBottom:"90px solid #ddd"}}/>
@@ -7,8 +11,8 @@ export const FilesViewScreen = () => {
                     <i className="file icon" style={{fontSize:"30px",position:"relative",left:"5px",top:"5px"}}></i>
                 </div>
                 <div className="profile_heading">
-                    <h1>Approval Required </h1>
-                    <p>type</p>
+                    <h1>File View </h1>
+             
                 </div>
             </section>
             <section className="profileContent">
@@ -24,7 +28,9 @@ export const FilesViewScreen = () => {
                         <td className="collapsing">
                             <i className="file icon"></i> image
                         </td>
-                        <td>..</td>
+                        <td>
+                            <img src={location.state.file}></img>
+                        </td>
                     </tr>
                     </tbody>
                 </table>

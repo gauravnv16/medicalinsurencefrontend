@@ -1,12 +1,23 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux"
-import { Link } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
+import { API_URL } from "../../../API";
 
 export const ProfileEditScreen = () => {
-    const User = useSelector(state=>state.SignedUser)
+    const [User,setUsers] = useState({});
+    const params = useParams();
+
+    useEffect(() => {
+        axios.get(API_URL+'api/user/'+params.id).then((data) => {
+            setUsers(data.data[0]);
+        });
+    });
+
     return (
         <div style={{minWidth:"300px"}}>
             <hr style={{border:"none",borderBottom:"90px solid #ddd"}}/>
-            <h1>Update</h1>
+            <h1 style={{textAlign:"center"}}>Update</h1>
             <section className="profileContent">
             <div style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
                 <table className="ui celled striped table" style={{width:"400px",padding:"10px"}}>
@@ -26,19 +37,19 @@ export const ProfileEditScreen = () => {
                         <td className="collapsing">
                             <i className="phone icon"></i> Phone no
                         </td>
-                        <input className="input" name="Name" id="Name" value={User.Phone_No}></input>
+                        <input className="input" name="Phone_No" id="Name" value={User.Phone_no}></input>
                         </tr>
                         <tr>
                         <td>
                             <i className="envelope icon"></i> email
                         </td>
-                        <input className="input" name="Name" id="Name" value={User.Email}></input>
+                        <input className="input" name="email" id="Name" value={User.Email}></input>
                         </tr>
                         <tr>
                         <td>
                             <i className="book icon"></i> Address
                         </td>
-                       <td><input className="input" name="Name" id="Name" value={User.Address}></input></td>
+                       <td><input className="input" name="Name" id="" value={User.Address}></input></td>
                         </tr>
                         <tr>
                         <td>
@@ -50,7 +61,7 @@ export const ProfileEditScreen = () => {
                         <td>
                             <i className="folder icon"></i> Files
                         </td>
-                        <td><Link to="/user/files">View</Link></td>
+                        <td><Link to={"/user/"+User.Id+"/files/upload"}>Upload</Link></td>
                         </tr>
 
                     </tbody>
@@ -59,8 +70,8 @@ export const ProfileEditScreen = () => {
             </section>
             <br/>
             <section style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
-                <button className="ui button"><i className="fa-solid fa-pen-to-square"></i> Edit</button>
-                <button className="ui button"><i className="fa-solid fa-right-from-bracket"></i> LogOut</button>
+                <button className="ui button">Update</button>
+
             </section>
             <br/><br/><br/><br/><br/>
         </div>

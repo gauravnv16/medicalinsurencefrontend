@@ -1,13 +1,21 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 
 export const FilesScreen = () => {
     const files = [
         "Photo",
         "Proof"
     ]
-    const [arr,setArr] = useState(files);
+
+    const types = [
+        "Pic",
+        "Proof"
+    ]
     
+    const [arr,setArr] = useState(types);
+    const navigate = useNavigate();
+    const location = useLocation();
+    console.log(location.state.user['Pic'])
     const Search = () => {
         let e = document.getElementById("search");
 
@@ -19,7 +27,7 @@ export const FilesScreen = () => {
             if(res.length !== 0) setArr(res);
             else setArr(["Nothing found.."])
         } else {
-            setArr(files)
+            setArr(types)
         }
     }
     return (
@@ -45,12 +53,12 @@ export const FilesScreen = () => {
                                         <i className="file icon"></i>
                                         <div className="content" style={{backgroundColor:"white",color:"black"}}>
                                             {policy}
-                                            <div className="sub header">Human Resources
+                                            <div className="sub header">
                                         </div>
                                         </div>
                                     </h4></td>
                                     <td>
-                                        <Link to="/user/files/view" className="ui button">View</Link>
+                                        <button onClick={ () => {navigate("/user/files/view",{state:{file:location.state.user[policy]}})}} className="ui button">View</button>
                                     </td>
                                 </tr>
                         else {

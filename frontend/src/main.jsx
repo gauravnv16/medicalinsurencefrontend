@@ -31,6 +31,9 @@ import { createStore } from 'redux';
 import { Allreducers } from './Reducers/AllReducers';
 import { Provider } from 'react-redux';
 import { ProfileEditScreen } from './Components/Screens/ProfileEditScreen';
+import { AdminScreen } from './Components/Screens/AdminScreen';
+import { FileUploadScreen } from './Components/Screens/FileUploadScreen';
+import { PolicyClaimScreen } from './Components/Screens/PolicyClaimScreen';
 
 
 const store = createStore(Allreducers,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
@@ -40,8 +43,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
    <BrowserRouter>
     <Provider store={store}>
         <NavBar/>
-        <ErrorBoundary FallbackComponent={ ErrorFallback } onReset={() => {}}>
-        <Suspense fallback={<Loader/>}>
         <Routes>
             {/* main Routes */}
             <Route path='/' element={<App/>}></Route>
@@ -50,20 +51,21 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           
             
             <Route path="/user/profile" element={<ProfileScreen/>}></Route>
-            <Route path="/user/Update" element={<ProfileEditScreen/>}></Route>
+            <Route path="/user/:id/edit" element={<ProfileEditScreen/>}></Route>
             <Route path="/user/policy" element={<PolicySceen/>}></Route>
             <Route path="/user/policy/view" element={<PolicyViewScreen/>}></Route>
+            <Route path="/user/policy/claim" element={<PolicyClaimScreen/>}></Route>
             <Route path="/user/files" element={<FilesScreen/>}></Route>
             <Route path="/user/files/view" element={<FilesViewScreen/>}></Route>  
+            <Route path="/user/:id/files/upload" element={<FileUploadScreen/>}></Route>  
 
             {/* AdminRoutes */}
-    
+            <Route path="/user/admin" element={<AdminScreen/>}/>
             <Route path="/user/admin/profileapproval" element={<UserProfileApproval/>}/>
             <Route path="/user/admin/policyapproval" element={<UserPolicyApproval/>}/>
-            <Route path="user/admin/user/view" element={<UserViewScreen/>}/>
+            <Route path="user/admin/:id/view" element={<UserViewScreen/>}/>
           </Routes>
-          </Suspense> 
-          </ErrorBoundary>
+
         <Footer/>
         </Provider>
     </BrowserRouter>

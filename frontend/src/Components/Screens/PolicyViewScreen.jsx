@@ -1,6 +1,9 @@
-import { Link } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 
 export const PolicyViewScreen= () =>{
+    const location = useLocation();
+    const navigate = useNavigate();
+
     return (
         <div style={{minWidth:"300px"}}>
             <hr style={{border:"none",borderBottom:"90px solid #ddd"}}/>
@@ -9,7 +12,7 @@ export const PolicyViewScreen= () =>{
                     <i className="file icon" style={{fontSize:"30px",position:"relative",left:"5px",top:"5px"}}></i>
                 </div>
                 <div className="profile_heading">
-                    <h1>Policy Name </h1>
+                    <h1>{location.state.policy}</h1>
                     <p>applicant</p>
                 </div>
             </section>
@@ -51,7 +54,7 @@ export const PolicyViewScreen= () =>{
             </section>
             <br/>
             <section style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
-                <button className="ui button">Claim</button>
+                <button className="ui button" onClick={ () => navigate('/user/policy/claim',{state:{policy:location.state.policy}})}>Claim</button>
                 <button className="ui button">withdraw</button>
             </section>
             <br/><br/><br/><br/><br/>
