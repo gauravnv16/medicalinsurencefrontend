@@ -47,7 +47,7 @@ export const AdminScreen = () =>{
         <div className="ui cards" style={{width:"300px"}}>
             {
                 arr.map((user) => {
-                    if(!user.isAdmin && !user.isApproved && user.ApprovalType!= '' && user.ApprovalType!= 'Policy Claim')
+                    if(!user.isAdmin && !user.isApproved && user.ApprovalType!= '')
                     return (
                         <div class="card">
                             <div class="content">
